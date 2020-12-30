@@ -1,0 +1,348 @@
+{
+    "help":
+    {
+        "sunquant_frame.LoopInterval": " 查询最新价并执行策略的时间间隔（秒）",
+        "sunquant_frame.DefaultOtherHandlePeriod": " 多少次间隔LoopInterval之后，执行一次其他操作，比如：默认股票买卖，非策略股票清仓。最小为1",
+        "sunquant_frame.MaxWaitsecsForDeal": " 下单后等待成交的最长等待时间（秒），超过此时间执行撤单，盘前成交等待时，可能会达到该最长时间",
+        "sunquant_frame.MailServer": " 邮件发送服务器，发送每日总结邮件使用的邮件服务器",
+        "sunquant_frame.MailSender": " 发送方邮件地址。163邮件465端口发送测试通过",
+        "sunquant_frame.MailPassword": " 邮箱密码。",
+
+        "trade_engine_futu.ApiIP": " Futu Api socket ip",
+        "trade_engine_futu.ApiPort": " Futu Api socket port",
+        "trade_engine_futu.Market": " 'HK'-港股 'US'-美股",
+        "trade_engine_futu.EnvType": " REAL=真实环境 SIMULATE=模拟环境",
+        "trade_engine_futu.HasUSQuote": " 是否已购买美股行情。如果未购买行情，则只能通过刷新持仓列表来获得股票的最新价。",
+        "trade_engine_futu.TradePasswordMd5": " 交易密码MD5，模拟环境不需要",
+        "trade_engine_futu.StockCodes.Prefix": "股票代码中的交易所前缀，美股：US.； 港股：HK.； A股：CN.",
+
+        "trade_engine_ib.ApiIP": " IB Api socket ip",
+        "trade_engine_ib.ApiPort": " IB Api socket port",
+        "trade_engine_ib.StockCodes.exchanges": " IB api中的交易所代码：纳斯达克-ISLAND. 外汇-IDEALPRO. 智能匹配-SMART.",
+        "trade_engine_ib.StockCodes.FX.types": " IB可交易外汇品种：美元（USD）、澳元（AUD）、加元（CAD）、瑞士法郎（CHF）、离岸人民币（CNH）、丹麦克朗（DKK）、捷克克朗（CZK）、欧元 （EUR）、英镑（GBP）、港元（HKD）、匈牙利福林（HUF）、以色列新谢克尔（ILS）、日元（JPY）、墨西哥比索（MXN）、挪威克朗 （NOK）、新西兰元（NZD）、俄罗斯卢布（RUB）、瑞典克朗（SEK），新加坡元（SGD）和韩元（KRW）",
+
+        "trade_engine_okex.ApiKey": " Okex Api Key",
+        "trade_engine_okex.SeceretKey": " Okex Api Seceret Key",
+        "trade_engine_okex.PassPhrase": " Okex Api Pass Phrase",
+
+        "trade_engine_binance.ApiKey": " Binance Api Key",
+        "trade_engine_binance.SeceretKey": " Binace Api Seceret Key",
+
+        "trade_engine_xxx.StockCodes": " 策略交易的股票列表，逗号分隔，每一只股票必须对应 xxx_shannon_StockCode 或者 xxx_grid_StockCode 的配置项",
+        "trade_engine_xxx.StockCodes.prefix": "股票代码中的交易所前缀：US.美股 HK.港股 FX.外汇 CC.加密货币",
+        "trade_engine_xxx.AveVolaStockCodes": " 需要计算AveVola的股票列表，计算结果保存到/tmp/stkquote.json，供其他进程使用",
+        "trade_engine_xxx.InvestTotal": " 初始投入总资产，计算收益率时，以此为基数；计算每只股票的投入时，以此为基数乘以投入比例",
+        "trade_engine_xxx.BalanceExtra": " 临时投入的额外现金资产",
+        "trade_engine_xxx.BalanceReservedMin": " 当账户现金余额小于此值时，卖出一部分DefaultStock",
+        "trade_engine_xxx.BalanceReservedMax": " 当账户现金余额大于此值时，买入一部分DefaultStock",
+        "trade_engine_xxx.DefaultStock": " 默认股票，即账户有较多现金余额时，默认买入此股票，默认股票通常是纳指ETF:US.QQQ 或者标普500ETF:US.SPY",
+        "trade_engine_xxx.DefaultStockAutorun": " 是否执行默认股票买卖策略，为0时，不再自动交易默认股票",
+        "trade_engine_xxx.DefaultStockStartPrice": " 默认股票的起始价，用于计算基准收益，即满仓默认股票的收益",
+        "trade_engine_xxx.SelloutOtherStocks": " 对于账户的现有持仓中，那些不在策略股票列表中的股票，是否执行自动卖出",
+        "trade_engine_xxx.MaxFees": " 交易费用，例如 1.005 代表：买卖1000美元的股票，费用5美元",
+        "trade_engine_xxx.SmartWaitMinutes": " 市价交易一些股票时，比如默认股票的买卖，其他股票的卖出等，默认等待的时间，单位：分钟",
+        "trade_engine_xxx.SmartAmountSegment": " 默认股票买卖，其他股票卖出等的单次交易的金额，单位：元",
+        "trade_engine_xxx.MailReceivers": "接收每日简报的邮箱，多个邮箱逗号分隔",
+
+        "TradeEngineName_grid_StockCode.GridType": " 网格类型，'Normal', 'KTable', 'Geo', 'Arith', 'GeoArith', 'Blind', 默认为'Normal'，具体参见源代码",
+        "TradeEngineName_grid_StockCode.GridCount": " 该只股票网格策略的网格总数",
+        "TradeEngineName_grid_StockCode.GridMinPrice": " 该只股票网格策略的网格最低价",
+        "TradeEngineName_grid_StockCode.GridMaxPrice": " 该只股票网格策略的网格最高价",
+        "TradeEngineName_grid_StockCode.InvestRatio": " 该只股票的资金投入比例，实际投入金额 = InvestTotal * InvestRatio",
+        "TradeEngineName_grid_StockCode.StartPrice": " 该只股票的初始价格，用于计算收益情况",
+        "TradeEngineName_grid_StockCode.SelfAdaptionMP": " 该只股票的网格策略，是否根据股价均线，自动调整网格的MidPrice，即自适应改变网格的MinPrice和MaxPrice",
+        "TradeEngineName_grid_StockCode.MidPriceMaxDeviation": " 随着股价的上涨和下跌，自适应调整的MidPrice会大幅不同于初始的MidPrice，此参数为自适应的MidPrice偏离初始值的最大倍数",
+        "TradeEngineName_grid_StockCode.SelfAdaptionT": " 该只股票的网格策略，是否根据股价波动情况，自动调整网格的Threshold大小，即自适应改变GridCount",
+
+        "TradeEngineName_shannon.BeMaker": " 香农网格下单买入时的价格，是否与'买一'相同，默认为Taker，即与'卖一'相同；卖出时类似",
+        "TradeEngineName_shannon.BeLurker": " 香农网格，是否提前在激活阈值边界的价格处，提前下单等待成交",
+        "TradeEngineName_shannon.MaxWaitsecsTaker": " Taker单的最长等待时间，超时撤单",
+        "TradeEngineName_shannon.MaxWaitsecsMaker": " Maker单的最长等待时间，超时撤单",
+        "TradeEngineName_shannon.MaxWaitsecsLurker": " Lurker单的最长等待时间，超时撤单",
+
+        "TradeEngineName_shannon_StockCode.Threshold": " 阈值T，杠杆L，则买卖价差=2T，Lurker买卖价差=4T;买卖量/总值=0.5×T×L; 最大值/中间价=L/(L-2)，最小值/中间价=(L-2)/L",
+        "TradeEngineName_shannon_StockCode.BaseLeverage": " 杠杆L，如果不指定BaseLeverage，实际使用的Leverage可通过设置MinPrice和MaxPrice自动计算得到",
+        "TradeEngineName_shannon_StockCode.InvestRatio": " 该只股票的资金投入比例，实际投入金额 = InvestTotal * InvestRatio",
+        "TradeEngineName_shannon_StockCode.StartPrice": " 该只股票的初始价格，用于计算收益情况",
+        "TradeEngineName_shannon_StockCode.MidPrice": " 该只股票的策略中间价格",
+        "TradeEngineName_shannon_StockCode.MidPosition": " 该只股票的股价达到MidPrice时，该股的仓位比例，即此时该股市值 = MidPosition * 该股的初始投入资金的现值（即增值后）",
+        "TradeEngineName_shannon_StockCode.SelfAdaptionMP": " 该只股票的香农策略，是否根据股价均线，自动调整MidPrice",
+        "TradeEngineName_shannon_StockCode.MidPriceMaxDeviation": " 随着股价的上涨和下跌，自适应调整的MidPrice会大幅不同于初始的MidPrice，此参数为自适应的MidPrice偏离初始值的最大倍数",
+        "TradeEngineName_shannon_StockCode.SelfAdaptionT": " 该只股票的香农策略，是否根据股价波动情况，自动调整Threshold大小",
+        "TradeEngineName_shannon_StockCode.tips": " 可以把Threshold设置得很高，比如0.9，BaseLeverage设置的很低，比如1.0，则股价很难达到阈值。通过设置StockCodes，InvestRatio，MidPrice，MiePosition可以实现程序交易建仓、清仓的功能效果",
+
+        "author email": "szy@tsinghua.org.cn"
+    },
+    "sunquant_frame":
+    {
+        "LoopInterval": 1800,
+        "DefaultOtherHandlePeriod": 1,
+        "MaxWaitsecsForDeal": 18000,
+        "MailServer": "smtp.163.com",
+        "MailSender": "a_real_email_address_of_163_vendor@163.com",
+        "MailPassword": "client_password_for_port_465_get_from_mail_vendor"
+    },
+    "trade_engine_futuhk-sunsimu":
+    {
+        "ApiPort": 2019,
+        "Market": "HK",
+        "EnvType": "SIMULATE",
+
+        "StockCodes": "HK.03690,HK.01876",
+        "InvestTotal": 1000000.00,
+        "BalanceExtra": 0.0,
+        "BalanceReservedMin": 100000,
+        "BalanceReservedMax": 150000,
+        "DefaultStockAutorun": 0,
+        "DefaultStockStartPrice": 25000.0,
+        "SelloutOtherStocks": 1,
+        "SmartWaitMinutes": 1,
+        "SmartAmountSegment": 100000,
+        "MailReceivers": "email_address_to_receive_daily_report_seperated_by_comma"
+    },
+    "futuhk-sunsimu_shannon":
+    {
+        "BeLurker": 1
+    },
+    "futuhk-sunsimu_grid_HK.03690":
+    {
+        "GridCount": 10,
+        "GridMinPrice": 200,
+        "GridMaxPrice": 300,
+        "InvestRatio": 0.7,
+        "StartPrice": 265,
+        "SelfAdaptionMP": 1,
+        "MidPriceMaxDeviation": 5.0,
+        "SelfAdaptionT": 1
+    },
+    "futuhk-sunsimu_grid_HK.01876":
+    {
+        "GridCount": 20,
+        "GridMinPrice": 20,
+        "GridMaxPrice": 30,
+        "InvestRatio": 0.7,
+        "StartPrice": 25,
+        "SelfAdaptionMP": 1,
+        "MidPriceMaxDeviation": 5.0,
+        "SelfAdaptionT": 1
+    },
+    "futuhk-sunsimu_shannon_HK.03690":
+    {
+        "Threshold": 0.01,
+        "BaseLeverage": 10,
+        "InvestRatio": 0.7,
+        "StartPrice": 265,
+        "MidPrice": 265,
+        "MidPosition": 0.5,
+        "SelfAdaptionMP": 1,
+        "MidPriceMaxDeviation": 5.0,
+        "SelfAdaptionT": 1
+    },
+    "futuhk-sunsimu_shannon_HK.01876":
+    {
+        "Threshold": 0.01,
+        "BaseLeverage": 10,
+        "InvestRatio": 0.7,
+        "StartPrice": 25,
+        "MidPrice": 25,
+        "MidPosition": 0.5,
+        "SelfAdaptionMP": 1,
+        "MidPriceMaxDeviation": 5.0,
+        "SelfAdaptionT": 1
+    },
+
+    "trade_engine_futuus-sun":
+    {
+        "ApiIP": "127.0.0.1",
+        "ApiPort": 2020,
+        "Market": "US",
+        "EnvType": "REAL",
+        "HasUSQuote": 1,
+        "TradePasswordMd5": "MD5_of_trade_password",
+
+        "StockCodes": "US.AAPL,US.TSLA",
+        "InvestTotal": 200000.00,
+        "BalanceExtra": 0.0,
+        "BalanceReservedMin": 10000,
+        "BalanceReservedMax": 20000,
+        "DefaultStock": "US.QQQ",
+        "DefaultStockAutorun": 1,
+        "DefaultStockStartPrice": 300.0,
+        "SelloutOtherStocks": 0,
+        "MaxFees": 1.001,
+        "SmartWaitMinutes": 5,
+        "SmartAmountSegment": 10000,
+        "MailReceivers": "email_address_to_receive_daily_report_seperated_by_comma"
+    },
+    "futuus-sun_shannon":
+    {
+    },
+    "futuus-sun_shannon_US.AAPL":
+    {
+        "Threshold": 0.01,
+        "BaseLeverage": 10,
+        "InvestRatio": 0.70,
+        "StartPrice": 320.0,
+        "MidPrice": 320.0,
+        "MidPosition": 0.5,
+        "SelfAdaptionMP": 1,
+        "MidPriceMaxDeviation": 5.0,
+        "SelfAdaptionT": 1
+    },
+    "futuus-sun_shannon_US.TSLA":
+    {
+        "Threshold": 0.01,
+        "BaseLeverage": 4,
+        "InvestRatio": 0.70,
+        "StartPrice": 600.00,
+        "MidPrice": 600.0,
+        "MidPosition": 0.5
+    },
+
+    "trade_engine_ib-sun":
+    {
+        "ApiIP": "127.0.0.1",
+        "ApiPort": 2021,
+        "HasStreamingQuote": 0,
+        "HasHistoricalPermission": 0,
+        "UseMargin": 0,
+        "MarginLeverage": 0,
+
+        "StockCodes": "US.AAPL",
+        "InvestTotal": 100000.0,
+        "BalanceExtra": 0,
+        "BalanceReservedMin": 10000,
+        "BalanceReservedMax": 20000,
+        "DefaultStock": "US.QQQ",
+        "DefaultStockAutorun": 1,
+        "DefaultStockStartPrice": 200.0,
+        "SelloutOtherStocks": 0,
+        "SmartAmountSegment": 5000,
+        "MailReceivers": "email_address_to_receive_daily_report_seperated_by_comma"
+    },
+    "ib-sun_shannon":
+    {
+        "MaxWaitsecsTaker": 300,
+        "MaxWaitsecsMaker": 600,
+        "MaxWaitsecsLurker": 18000
+    },
+    "ib-sun_shannon_US.AAPL":
+    {
+        "Threshold": 0.005,
+        "BaseLeverage": 10,
+        "InvestRatio": 0.70,
+        "StartPrice": 320.0,
+        "MidPrice": 320.0,
+        "MidPosition": 0.50,
+        "SelfAdaptionMP": 1,
+        "MidPriceMaxDeviation": 5.0,
+        "SelfAdaptionT": 1
+    },
+
+    "trade_engine_ib-fxsun":
+    {
+        "ApiIP": "127.0.0.1",
+        "ApiPort": 2022,
+        "HasStreamingQuote": 0,
+        "HasHistoricalPermission": 0,
+        "UseMargin": 1,
+        "MarginLeverage": 10,
+
+        "StockCodes": "FX.EUR.USD",
+        "InvestTotal": 10000.0,
+        "BalanceExtra": 0,
+        "SelloutOtherStocks": 0,
+        "MaxFees": 1.002,
+        "SmartWaitMinutes": 5,
+        "SmartAmountSegment": 2000,
+        "MailReceivers": "email_address_to_receive_daily_report_seperated_by_comma"
+    },
+    "ib-fxsun_shannon":
+    {
+        "MaxWaitsecsTaker": 300,
+        "MaxWaitsecsMaker": 600,
+        "MaxWaitsecsLurker": 18000
+    },
+    "ib-fxsun_shannon_FX.EUR.USD":
+    {
+        "Threshold": 0.001,
+        "BaseLeverage": 50,
+        "PricePrecision": 4,
+        "InvestRatio": 10.0,
+        "StartPrice": 1.2000,
+        "MidPrice": 1.2000,
+        "MidPosition": 0.5,
+        "SelfAdaptionMP": 1,
+        "MidPriceMaxDeviation": 5.0,
+        "SelfAdaptionT": 1
+    },
+
+    "trade_engine_okex-sun":
+    {
+        "ApiKey": "okex_api_key",
+        "SeceretKey": "okex_seceret_key",
+        "PassPhrase": "okex_pass_phrase",
+
+        "StockCodes": "CC.BTC",
+        "InvestTotal": 10000.0,
+        "BalanceExtra": 0,
+        "SelloutOtherStocks": 0,
+        "MaxFees": 1.001,
+        "SmartWaitMinutes": 5,
+        "SmartAmountSegment": 200,
+        "MailReceivers": "email_address_to_receive_daily_report_seperated_by_comma"
+    },
+    "okex-sun_shannon":
+    {
+        "BeLurker": 0,
+        "MaxWaitsecsTaker": 300,
+        "MaxWaitsecsMaker": 600,
+        "MaxWaitsecsLurker": 18000
+    },
+    "okex-sun_shannon_CC.BTC":
+    {
+        "Threshold": 0.006,
+        "BaseLeverage": 6,
+        "InvestRatio": 1.0,
+        "StartPrice": 20000.0,
+        "MidPrice": 20000.0,
+        "MidPosition": 0.5,
+        "SelfAdaptionMP": 1,
+        "MidPriceMaxDeviation": 5.0,
+        "SelfAdaptionT": 1
+    },
+
+    "trade_engine_binance-sun":
+    {
+        "ApiKey": "binance_api_key",
+        "SeceretKey": "binance_seceret_key",
+
+        "StockCodes": "CC.BTC",
+        "InvestTotal": 10000.0,
+        "BalanceExtra": 0,
+        "SelloutOtherStocks": 0,
+        "MaxFees": 1.001,
+        "SmartWaitMinutes": 5,
+        "SmartAmountSegment": 200,
+        "MailReceivers": "email_address_to_receive_daily_report_seperated_by_comma"
+    },
+    "binance-sun_shannon":
+    {
+        "BeLurker": 0,
+        "MaxWaitsecsTaker": 300,
+        "MaxWaitsecsMaker": 600,
+        "MaxWaitsecsLurker": 18000
+    },
+    "binance-sun_shannon_CC.BTC":
+    {
+        "Threshold": 0.006,
+        "BaseLeverage": 6,
+        "InvestRatio": 1.0,
+        "StartPrice": 20000.0,
+        "MidPrice": 20000.0,
+        "MidPosition": 0.5,
+        "SelfAdaptionMP": 1,
+        "MidPriceMaxDeviation": 5.0,
+        "SelfAdaptionT": 1
+    }
+}

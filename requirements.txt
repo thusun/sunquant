@@ -1,0 +1,6 @@
+pandas
+simplejson
+pytz
+protobuf==3.11.3
+PyCryptodome
+futu-api
