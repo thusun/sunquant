@@ -399,6 +399,9 @@ class TradeEngineFutu(TradeEngineBase):
                        "isbuy=", isbuy, "ismarketorder=", ismarketorder)
             return None
 
+        if self.EnvType == futu.TrdEnv.SIMULATE and self.Market == futu.Market.US and not self.isnow_continuous_bidding_usstk():
+            return None
+        
         CallLimit.wait_placeorder()
         ret, data = self._trade_ctx.place_order(price=price_v, qty=volume_v, code=stockcode, trd_side=ts,
                                                 order_type=ot, adjust_limit=al, trd_env=self.EnvType,
