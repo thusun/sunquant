@@ -78,6 +78,9 @@ class TradeEngineOKEx(TradeEngineBase):
     def call_get_market_snapshot(self, stockcodes):
         self.nowasserts_total = self.nowbalance
         for code in stockcodes:
+            if code not in self.get_stockcode_pools() and not code == self.get_default_stock():
+                continue
+
             cc_coin = code.split('.')
             ticker = self.spot_api.get_specific_ticker(instrument_id=cc_coin[1].upper()+'-USDT')
             if code not in self.quotes_dict:
