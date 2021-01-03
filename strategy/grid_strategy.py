@@ -291,7 +291,7 @@ class GridStrategy(object):
     def begin_transact(self, lastprice, nowbalance, nowstocks, bidprice, askprice, spread, minstocks, forcelurker, blind):
         needbuy, buyprice, buyvolume, needsell, sellprice, sellvolume = 0, 0, 0, 0, 0, 0
 
-        if abs(nowbalance - self._nowbalance) > 1 or abs(nowstocks - self._nowstocks) > 0.5:
+        if abs(nowbalance - self._nowbalance) > 1 or abs(nowstocks - self._nowstocks) > 0.000001:
             SQLog.warn("begin_transact:nowbalance or nowstocks not match,", self._stockcode, "lastprice=", lastprice,
                        "nowbalance=", nowbalance, "nowstocks=", nowstocks, "self._nowbalance=", self._nowbalance,
                        "self._nowstocks=", self._nowstocks, "_isopen=", self._isopen)
