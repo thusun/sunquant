@@ -572,9 +572,9 @@ class SunquantFrame(object):
 
                     if not stg.is_halfopen():
                         nowstocks = nowstocks_dict.get(stockcode, {}).get('qty', 0)
-                        invest_nowvalue = stg.get_nowbalance() + stg.get_nowstocks() * stg.get_nowprice()
+                        invest_nowvalue = stg.get_nowbalance() + stg.get_nowstocks() * lastprice
                         assign_balance = stg.get_nowbalance()
-                        if abs(nowstocks - stg.get_nowstocks()) > 0.5 and abs(1 - stg.get_nowprice()/lastprice) < 0.20:
+                        if abs(nowstocks - stg.get_nowstocks()) > 0.000001:
                             assign_balance = invest_nowvalue - nowstocks * lastprice
 
                         lotsize = quotes_dict.get(stockcode, {}).get('lot_size', 1)
