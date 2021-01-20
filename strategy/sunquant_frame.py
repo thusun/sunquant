@@ -772,7 +772,7 @@ class SunquantFrame(object):
             except SystemExit:
                 self.close()
                 self._trade_engine.close_api()
-                os._exit(0)
+                exit(0)
             except Exception as e:
                 SQLog.error("monitor_run, Exception,e=", e, "traceback=\n", traceback.format_exc())
                 hasException = True
