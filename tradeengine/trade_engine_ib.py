@@ -688,7 +688,7 @@ class TradeEngineIb(TradeEngineBase):
                 return [average, volatility]
             else:
                 SQLog.warn("call_get_average_volatility,bars too small,stockcode=", stockcode, "bars=", bars)
-                raise Exception("call_get_average_volatility failed,stockcode=" + stockcode)
+                return [0, 0]
         else:
             SQLog.warn("call_get_average_volatility,reqHistoricalData_wait fail,stockcode=", stockcode)
             raise Exception("call_get_average_volatility failed,stockcode=" + stockcode)
