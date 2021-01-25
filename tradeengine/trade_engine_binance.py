@@ -122,7 +122,7 @@ class TradeEngineBinance(TradeEngineBase):
             return [average, volatility]
         else:
             SQLog.warn("call_get_average_volatility,result too small,stockcode=", stockcode, "result=", result)
-            raise Exception("call_get_average_volatility failed,stockcode=" + stockcode)
+            return [0, 0]
 
     def call_place_order(self, stockcode, volume, price, isbuy, ismarketorder):
         volume_v, price_v = self.round_order_param(stockcode, volume, price, isbuy, ismarketorder)
