@@ -370,7 +370,7 @@ class TradeEngineFutu(TradeEngineBase):
             return [average, volatility]
         else:
             SQLog.warn("call_get_average_volatility,request_history_kline fail,stockcode=", stockcode, "ret=", ret, "prices=\n", prices)
-            raise Exception("call_get_average_volatility failed,stockcode=" + stockcode + ",ret=" + str(ret))
+            return [0, 0]
 
 
     def call_place_order(self, stockcode, volume, price, isbuy, ismarketorder):
