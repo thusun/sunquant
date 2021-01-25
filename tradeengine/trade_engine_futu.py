@@ -406,7 +406,7 @@ class TradeEngineFutu(TradeEngineBase):
         ret, data = self._trade_ctx.place_order(price=price_v, qty=volume_v, code=stockcode, trd_side=ts,
                                                 order_type=ot, adjust_limit=al, trd_env=self.EnvType,
                                                 time_in_force=futu.TimeInForce.DAY,
-                                                fill_outside_rth=not ot == futu.OrderType.MARKET)
+                                                fill_outside_rth=self.EnvType == futu.TrdEnv.REAL and not ot == futu.OrderType.MARKET)
         SQLog.debug("call_place_order,place_order ret=", ret, "data=\n", data)
         if futu.RET_OK == ret:
             orderid = data['order_id'][0]
