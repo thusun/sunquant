@@ -466,7 +466,7 @@ class SunquantFrame(object):
             ns_keys = list(nowstocks_dict.keys()).copy()
             for stockcode in ns_keys:
                 if nowstocks_dict.get(stockcode, {}).get('qty', 0) > 0\
-                        and not stockcode == self._trade_engine.get_default_stock()\
+                        and (not self._trade_engine.get_default_stock_autorun() or not stockcode == self._trade_engine.get_default_stock())\
                         and stockcode not in self._trade_engine.get_stockcode_pools():
 
                     orders = self._trade_engine.get_orders_notclose([stockcode])
