@@ -474,7 +474,7 @@ class TradeEngineFutu(TradeEngineBase):
             return False
         for i in range(3):
             CallLimit.wait_modifyorder()
-            time.sleep(i)
+            time.sleep(i*30)
             modret, moddata = self._trade_ctx.modify_order(modify_order_op=futu.ModifyOrderOp.CANCEL,
                                                            order_id=orderid, qty=0, price=0, trd_env=self.EnvType)
             SQLog.debug("call_cancel_order,modify_order orderid=", orderid, "ret=", modret, "data=\n", moddata)
